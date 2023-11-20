@@ -1,0 +1,64 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+#Datos
+m=68.1 #Masa en kilogramos
+v=40 #Velocidad en m/s
+t=10 #Tiempo en segundos
+g=-9.81 #Aceleración de gravedad
+
+#Función a graficar
+def f(c):
+  return (((m*g/t)*(1-np.exp((-c/m)*t)))-v/t)
+c=np.linspace(1,15,150)
+
+#Graficación
+plt.plot(c,f(c))
+plt.xlabel('c')
+plt.ylabel('f(c)')
+plt.title('Resistencia del aire')
+
+
+import numpy as np
+#Matrices que conforman el sistema de ecuaciones
+A=np.array([[0.3,0.52,1],[0.5,1,1.9],[0.1,0.3,0.5]])
+X=np.array([["x1"],["x2"],["x3"]])
+B=np.array([[-0.01],[0.67],[-0.44]])
+print("Matriz de coeficientes:")
+print(A)
+print("Matriz X:")
+print(X)
+print("Matriz B:")
+print(B)
+
+#Cálculo del determinante de la matriz de coeficientes
+det_A=np.linalg.det(A)
+print(f"El determinante de A es: {det_A}")
+
+#Cálculo de x1
+C=np.array([[-0.01,0.52,1],[0.67,1,1.9],[-0.44,0.3,0.5]])
+det_C=np.linalg.det(C)
+print("Matriz C:")
+print(C)
+print(f"El determinante de C es: {det_C}")
+x1=det_C/det_A
+print(f"Valor de x1: {x1}")
+
+#Cálculo de x2
+D=np.array([[0.3,-0.01,1],[0.5,0.67,1.9],[0.1,-0.44,0.5]])
+det_D=np.linalg.det(D)
+print("Matriz D:")
+print(D)
+print(f"El determinante de D es: {det_D}")
+x2=det_D/det_A
+print(f"Valor de x2: {x2}")
+
+#Cálculo de x3
+E=np.array([[0.3,0.52,-0.01],[0.5,1,0.67],[0.1,0.3,-0.44]])
+det_E=np.linalg.det(E)
+print("Matriz E:")
+print(E)
+print(f"El determinante de E es: {det_E}")
+x3=det_E/det_A
+print(f"Valor de x3: {x3}")
