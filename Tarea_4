@@ -10,7 +10,7 @@ g=-9.81 #Aceleración de gravedad
 
 #Función a graficar
 def f(c):
-  return (((m*g/t)*(1-np.exp((-c/m)*t)))-v/t)
+  return (((m*g/t)*(1-np.exp((-c/m)*t)))-v)
 c=np.linspace(1,15,150)
 
 #Graficación
