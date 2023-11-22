@@ -1,0 +1,50 @@
+#| x  |  y  |
+#|----|-----|
+#| 1  | 0.5 |
+#| 2  | 2   |
+#| 3  | 2.9 |
+#| 5  | 3.5 |
+#| 5  | 4   |
+
+#Ecuación linealizada: y=aln(x)+b
+
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+#Datos
+x=np.array([1, 2, 3, 5, 5])
+y=np.array([0.5, 2, 2.9, 3.5, 4])
+lnx=np.array(np.log(x)) #Cálculo del logaritmo neperiano de los valores de x
+print(f"Valores de ln(x): {lnx}") #Para visualizar los valores de ln(x) obtenidos
+
+#Cálculo de a y b
+n=len(lnx)
+a=(n*np.sum(lnx*y)-np.sum(lnx)*np.sum(y))/(n*np.sum(lnx**2)-(np.sum(lnx))**2)
+b=(np.sum(y)-a*np.sum(lnx))/n
+
+#Ecuación de regresión lineal
+linea_regresion=a*lnx+b
+
+#Gráfica y ecuación
+plt.scatter(lnx, y, label='Datos', color='b')
+plt.plot(lnx, linea_regresion, label='Ajuste lineal', color='r')
+plt.xlabel('ln(x)')
+plt.ylabel('y')
+plt.title('Ajuste de datos por regresión lineal')
+plt.legend()
+plt.show()
+
+print(f"La ecuación de regresión es y={a:.2f}ln(x)+{b:.2f}")
+
+import numpy as np
+import math
+
+#Cálculo de y(2.6)
+a=2.01
+lnx_2_6=math.log(2.6)
+b=0.56
+
+y=a*lnx_2_6+b
+
+print(f"El valor de y para x=2.6 es: y={y:.2f}")
